@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-02-11T13:10:43Z</date>
+    <date>2020-01-07T12:37:35Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -11,7 +11,10 @@
         <template>
             <template>Template Module OPNSense-TPL</template>
             <name>Template Module OPNSense</name>
-            <description>Template OPNSense version: 0.1</description>
+            <description>Template OPNSense version: 0.2&#13;
+&#13;
+MIBs used:&#13;
+IF-MIB</description>
             <groups>
                 <group>
                     <name>Firewalls-Schulen</name>
@@ -948,6 +951,130 @@
                     <jmx_endpoint/>
                     <timeout>3s</timeout>
                     <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Updates available</name>
+                    <type>19</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>opnsense.update</key>
+                    <delay>60m</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>1</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>1</authtype>
+                    <username>{$OPNAPIK}</username>
+                    <password>{$OPNAPIS}</password>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.updates</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <timeout>10s</timeout>
+                    <url>https://{HOST.CONN}/api/core/Firmware/status</url>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Opnsense-Version</name>
+                    <type>19</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>opnsense.version</key>
+                    <delay>60m</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>1</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>1</authtype>
+                    <username>{$OPNAPIK}</username>
+                    <password>{$OPNAPIS}</password>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>16</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.product_version</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <timeout>10s</timeout>
+                    <url>https://{HOST.CONN}/api/core/Firmware/status</url>
                     <query_fields/>
                     <posts/>
                     <status_codes>200</status_codes>
@@ -3355,6 +3482,14 @@ through updating the syntax of the IANAifType textual convention.</description>
                     <value>90</value>
                 </macro>
                 <macro>
+                    <macro>{$OPNAPIK}</macro>
+                    <value/>
+                </macro>
+                <macro>
+                    <macro>{$OPNAPIS}</macro>
+                    <value/>
+                </macro>
+                <macro>
                     <macro>{$STORAGE_UTIL_CRIT}</macro>
                     <value>90</value>
                 </macro>
@@ -3451,7 +3586,23 @@ Last three attempts returned timeout.  Please check device connectivity.</descri
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template Module OPNSense-TPL:system.uptime[sysUpTime].last()}&lt;10m and {Template Module OPNSense-TPL:system.uptime[sysUpTime].last()}&lt;&gt;0</expression>
+            <expression>{Template Module OPNSense-TPL:opnsense.update.last()}&gt;0</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template Module OPNSense-TPL:opnsense.update.last()}=0</recovery_expression>
+            <name>Update available on {HOST.NAME}</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>1</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>1</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template Module OPNSense-TPL:system.uptime[sysUpTime].last()}&lt;2m and {Template Module OPNSense-TPL:system.uptime[sysUpTime].last()}&lt;&gt;0</expression>
             <recovery_mode>2</recovery_mode>
             <recovery_expression/>
             <name>{HOST.NAME} has been restarted</name>
@@ -3461,7 +3612,7 @@ Last three attempts returned timeout.  Please check device connectivity.</descri
             <status>0</status>
             <priority>2</priority>
             <description>Last value: {ITEM.LASTVALUE1}.&#13;
-The device uptime is less than 10 minutes</description>
+The device uptime is less than 2 minutes</description>
             <type>0</type>
             <manual_close>1</manual_close>
             <dependencies>
